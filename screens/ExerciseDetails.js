@@ -7,7 +7,7 @@ export default function ExerciseDetails() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Header Card (Spanning Full Width) */}
-      <Card style={[styles.card, styles.fullWidthCard]}>
+      <Card style={[styles.fullWidthCard]}>
         <Card.Content>
           <Title style={styles.title}>
             <FontAwesome5 name="dumbbell" size={24} color="#388e3c" /> Exercise & Fitness
@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 15,
     backgroundColor: '#f0f4c3',
+    height:'100%'
   },
   row: {
     flexDirection: 'row',
@@ -117,11 +118,13 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
     borderRadius: 10,
-    elevation: 4,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f0f4c3',
   },
   fullWidthCard: {
-    marginBottom: 15,
+   padding:'3',
+   marginTop:'25',
+   height:'200px',
+   marginBottom:'20'
   },
   title: {
     fontSize: 22,

@@ -7,7 +7,7 @@ export default function EmergencyDetails() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Header */}
-      <Card style={[styles.card, styles.fullWidthCard]}>
+      <Card style={[styles.fullWidthCard]}>
         <Card.Content>
           <Title style={styles.title}>
             <FontAwesome5 name="exclamation-triangle" size={24} color="#d32f2f" /> Emergency Information
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 15,
     backgroundColor: '#ffebee',
+    height:'100%'
   },
   card: {
     flex: 1,
@@ -88,6 +89,9 @@ const styles = StyleSheet.create({
   },
   fullWidthCard: {
     marginBottom: 15,
+    marginTop:25,
+    maxHeight:'200'
+
   },
   title: {
     fontSize: 22,

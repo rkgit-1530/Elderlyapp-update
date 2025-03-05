@@ -63,11 +63,11 @@ export default function FoodDetails() {
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     padding: 15,
-    backgroundColor: '#fff3e0',
+    backgroundColor: 'transparent',
+    marginTop:'20'
   },
   card: {
     flex: 1,
