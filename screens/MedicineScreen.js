@@ -177,18 +177,21 @@ export default function MedicineScreen() {
       {/* Medicine Input Section */}
       {selectedPerson && (
         <>
+     
           <Text style={styles.subTitle}>Add Medicine for {selectedPerson}</Text>
           <Text style={styles.label}>Medicine Name</Text>
           <InputField placeholder="Enter Medicine Name" value={medicine} onChangeText={setMedicine} />
           <Text style={styles.label}>Time</Text>
           <InputField placeholder="Enter Time (e.g., 9:00 AM)" value={time} onChangeText={setTime} />
           <Button title="Add Medicine" onPress={addMedicine} />
+          
         </>
       )}
 
       {/* Medicine List */}
       {selectedPerson && (
         <>
+        
           <Text style={styles.subTitle}>{selectedPerson}'s Medicines:</Text>
           {people[selectedPerson].length === 0 ? (
             <Text style={styles.emptyStateText}>No medicines added yet.</Text>
@@ -201,6 +204,7 @@ export default function MedicineScreen() {
               )}
             />
           )}
+          
         </>
       )}
     </ScrollView>
@@ -250,7 +254,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   selectedPersonButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#f5f64e',
   },
   personButtonText: {
     fontSize: 16,
