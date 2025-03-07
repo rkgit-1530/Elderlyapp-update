@@ -26,7 +26,6 @@
     },
     "extra": {
       "eas": {
-        "projectId": "712ae7da-d90f-4b36-b11f-c31b291e4793",
         "firebaseApiKey": "AIzaSyBxBU7o62WYLOEhHV-1KgOg6sj3ntJzEbg",
         "firebaseAuthDomain": "elderly-app-afe1f.firebaseapp.com",
         "firebaseProjectId": "elderly-app-afe1f",
