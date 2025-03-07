@@ -2,13 +2,17 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // For icons
 import Card from '../components/Card'; // Reusable Card component
+import { useAuth } from '../context/AuthContext';
 
 export default function HomeScreen({ navigation }) {
+
+  const {currentUser} = useAuth();
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Welcome, User!</Text>
+        <Text style={styles.headerTitle}>Welcome, {currentUser?.email || 'User'}!</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <Ionicons name="person-circle-outline" size={32} color="#007bff" />
         </TouchableOpacity>

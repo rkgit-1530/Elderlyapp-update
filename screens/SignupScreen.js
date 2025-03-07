@@ -1,13 +1,50 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { TextInput, Button, Card } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../context/AuthContext";
 
 export default function SignupScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+
+  const { signup, loading } = useAuth();
+
+
+
+  const handle_submit = async () => {
+    try {
+      if (!email || !password || !confirmPassword) {
+        return Alert.alert('All the fields are required!');
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return Alert.alert('Please enter a valid email address!');
+      }
+
+      if (password !== confirmPassword) {
+        return Alert.alert('Passwords must match correctly!');
+      }
+
+      const firebase_user = await signup(email, password);
+
+      if (firebase_user) {
+        Alert.alert('Registered successfully!')
+        return navigation.navigate('Home')
+      }
+
+
+
+    } catch (e) {
+      console.log(e);
+      Alert.alert('Something Went Wrong.')
+    }
+  };
+
 
   return (
     <View style={styles.container}>
@@ -47,10 +84,11 @@ export default function SignupScreen() {
 
           <Button
             mode="contained"
-            onPress={() => navigation.navigate("Login")}
+            onPress={() => handle_submit()}
             style={styles.button}
+            disabled={loading}
           >
-            Sign Up
+            {loading ? 'Signing in' : 'Sign Up'}
           </Button>
 
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>

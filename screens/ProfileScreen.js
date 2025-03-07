@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { 
-  View, Text, StyleSheet, TouchableOpacity, Image, Alert 
+import {
+  View, Text, StyleSheet, TouchableOpacity, Image, Alert
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAuth } from "../context/AuthContext";
 
 export default function ProfileScreen({ navigation }) {
   const [user, setUser] = useState({
@@ -11,8 +12,10 @@ export default function ProfileScreen({ navigation }) {
     email: "Srinivas@gmail.com",
     phone: "+91 7358610061",
     medicalId: "653678941",
-    profilePic: "https://via.placeholder.com/100",
+    profilePic: require('../assets/ProfilePic.jpeg'),
   });
+
+  const { logout } = useAuth()
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -31,12 +34,12 @@ export default function ProfileScreen({ navigation }) {
   const handleLogout = async () => {
     Alert.alert("Logout", "Are you sure you want to log out?", [
       { text: "Cancel", style: "cancel" },
-      { 
-        text: "Logout", 
+      {
+        text: "Logout",
         onPress: async () => {
-          await AsyncStorage.removeItem("user");
-          navigation.replace("Login");
-        } 
+          await logout();
+          navigation.navigate('Login')
+        }
       },
     ]);
   };
@@ -44,7 +47,7 @@ export default function ProfileScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.profileHeader}>
-        <Image source={{ uri: user.profilePic }} style={styles.profileImage} />
+        <Image source={user.profilePic} style={styles.profileImage} />
         <Text style={styles.userName}>{user.name}</Text>
         <Text style={styles.userEmail}>{user.email}</Text>
       </View>
@@ -67,7 +70,7 @@ export default function ProfileScreen({ navigation }) {
 
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
         <Ionicons name="log-out-outline" size={24} color="#fff" />
-        <Text style={styles.buttonText}>Logout</Text>
+        <Text style={styles.buttonText} onPress={handleLogout}>Logout</Text>
       </TouchableOpacity>
     </View>
   );

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { TextInput, Button, Card } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons"; // For icons
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -11,14 +12,32 @@ export default function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
-  const handleLogin = () => {
-    if (email.trim() === "" || password.trim() === "") {
-      setError("Please fill in all fields.");
-      return;
+  const { loginFirebase, loading } = useAuth();
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      return Alert.alert("Error", "All fields are required!");
     }
-    setError("");
-    navigation.navigate("Home"); // Navigate to Home screen on successful login
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return Alert.alert("Error", "Please enter a valid email address.");
+    }
+
+    try {
+
+      const firebase_user = await loginFirebase(email, password)
+      if (firebase_user) {
+        navigation.navigate('Home')
+        return Alert.alert("Success", "Logged in successfully!");
+
+      }
+    } catch (error) {
+      Alert.alert("Login Failed", error.message);
+      console.error(error);
+    }
   };
+
 
   return (
     <View style={styles.container}>
@@ -59,8 +78,8 @@ export default function LoginScreen() {
           {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
           {/* Login Button */}
-          <Button mode="contained" onPress={handleLogin} style={styles.button}>
-            Login
+          <Button mode="contained" disabled={loading} onPress={() => handleLogin()} style={styles.button}>
+            {loading ? 'Logging in..' : 'Login'}
           </Button>
 
           {/* Signup Navigation */}
