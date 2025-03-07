@@ -63,10 +63,10 @@ export default function ProfileScreen({ navigation }) {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.editButton} onPress={handleEditProfile}>
+      {/* <TouchableOpacity style={styles.editButton} onPress={handleEditProfile}>
         <Ionicons name="create-outline" size={24} color="#fff" />
         <Text style={styles.buttonText}>Edit Profile</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
         <Ionicons name="log-out-outline" size={24} color="#fff" />
