@@ -9,6 +9,8 @@ export default function SignupScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setname] = useState("");
+
 
 
   const { signup, loading } = useAuth();
@@ -51,6 +53,16 @@ export default function SignupScreen() {
       <Card style={styles.card}>
         <Card.Content>
           <Text style={styles.title}>Create Account</Text>
+
+          <TextInput
+            label="Name"
+            mode="outlined"
+            value={name}
+            onChangeText={setname}
+            style={styles.input}
+            keyboardType="Name"
+            left={<TextInput.Icon icon="human" />}
+          />
 
           <TextInput
             label="Email"

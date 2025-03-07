@@ -103,6 +103,7 @@ export default function HospitalDetails() {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop:50,
     padding: 20,
     backgroundColor: '#e3f2fd',
   },

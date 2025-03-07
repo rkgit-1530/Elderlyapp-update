@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.jpg",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.raj_karan.medicine"
     },
     "web": {
       "favicon": "./assets/logo.jpg"
@@ -31,9 +32,9 @@
         "firebaseProjectId": "elderly-app-afe1f",
         "firebaseStorageBucket": "elderly-app-afe1f.firebasestorage.app",
         "firebaseMessagingSenderId": "1083117770270",
-        "firebaseAppId": "1:1083117770270:web:5d418d5640860de6cbc00f"
+        "firebaseAppId": "1:1083117770270:web:5d418d5640860de6cbc00f",
+        "projectId": "e32bc05a-b377-400a-bf71-8b7a7b88a191"
       }
-    },
-    "owner": "vickydecodes"
+    }
   }
 }

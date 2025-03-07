@@ -17,10 +17,10 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  const signup = async (email, password) => {
+  const signup = async (email, password,name) => {
     setLoading(true);
     try {
-      return await createUserWithEmailAndPassword(auth, email, password);
+      return await createUserWithEmailAndPassword(auth, email, password,name);
     } catch (error) {
       throw error;
     } finally {

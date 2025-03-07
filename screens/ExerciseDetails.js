@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
     borderRadius: 10,
-    backgroundColor: '#f0f4c3',
+    backgroundColor: 'white',
   },
   fullWidthCard: {
    padding:'3',
