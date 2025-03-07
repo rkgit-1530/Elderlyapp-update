@@ -8,7 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function ProfileScreen({ navigation }) {
   const [user, setUser] = useState({
     name: "Srinivas",
-    email: "Srinivas@example.com",
+    email: "Srinivas@gmail.com",
     phone: "+91 7358610061",
     medicalId: "653678941",
     profilePic: "https://via.placeholder.com/100",
