@@ -17,7 +17,7 @@ const Card = ({ title, icon, onPress, backgroundColor }) => {
 const styles = StyleSheet.create({
   card: {
     width: '100%',
-    height:170,
+    height:150,
     padding: 20,
     borderRadius: 15,
     marginBottom: 16,

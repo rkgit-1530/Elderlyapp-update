@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 15,
     backgroundColor: '#ffebee',
-    height:'100%'
+    height:'200px'
   },
   card: {
     flex: 1,
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   item: {
-    fontSize: 16,
+    fontSize: 13,
     marginTop: 5,
     color: '#555',
   },

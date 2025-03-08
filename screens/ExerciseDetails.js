@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   item: {
-    fontSize: 16,
+    fontSize: 14,
     marginTop: 5,
     color: '#555',
   },
